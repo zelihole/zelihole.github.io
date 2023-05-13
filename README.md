@@ -19,3 +19,4 @@ These contents that cannot be made public do not refer to illegal contents, but 
 The content of this website adhere to the real and reliable, serious nutrition, is an earth people from junior high school emotional sustenance.
 
 January 17, 2023, the anniversary of the site, the site name, domain name, production methods have changed, from the beginning of drag to now their own code, are my efforts, if there is a problem with the site content please forgive the public, and timely contact me (zelihole@outlook.com).
+——Translated by Netease
