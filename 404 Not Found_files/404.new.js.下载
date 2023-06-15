@@ -1,0 +1,151 @@
+var dnpw404 = {
+	collage: document.querySelector('.collage-404'),
+	collageImages: document.querySelector(".collage-404-images"),
+	collageH1: document.querySelector('.collage-404 h1'),
+	html: document.documentElement,
+	currentRange: 0,
+	shots: [],
+
+	init: function() {
+		this.fetchAndBuildShots()
+	},
+	loading: function() {
+		this.html.classList.remove('loaded')
+		this.html.classList.add('loading')
+	},
+	loaded: function() {
+		this.html.classList.remove('loading')
+		this.html.classList.add('loaded')
+	},
+	konami: function() {
+		this.collageH1.innerHTML = ''
+		this.collage.classList.add("arkanoid")
+		this.loading()
+		this.build404Shots(this.shots)
+	},
+	build404Shots: function(data) {
+		this.collageImages.innerHTML = ''
+		var numLoaded = 0
+		var that = this
+
+		//   create all links to shots and images
+		Array.prototype.forEach.call(data, function(shot, i) {
+
+			if (i > 52) return; //max-1
+
+			var link = document.createElement("a");
+			let isNewVer=document.querySelector("#photo");
+			if(isNewVer===null){  //is new version?
+				link.href = shot.url;
+				link.target = '_blank';
+			}else{
+				link.href = 'javascript:Getkid('+shot.id+')';
+				link.target = '_self';
+			}
+			
+			//  randomly position and style each shot link
+			var x = 0 * Math.random()
+			var y = 0 * Math.random()
+			var z = 500 * Math.random()
+			var s = (0.5 + 0.25 * Math.random())
+			var transform = "translateX(" + x + "%) translateY(" + y + "%) scale(" + s + ") "
+			link.style.transform = transform + " translateZ(" + z + "px)"
+			//   setup the shot image
+			var img = document.createElement("img")
+
+			function imgLoaded() {
+					numLoaded++;
+					link.classList.add("loaded")
+					link.style.transform = transform
+					setTimeout(function() {
+						link.classList.add("introduced")
+					}, 2000)
+					if (numLoaded == data.length) {
+						that.loaded()
+					}
+				}
+
+			// start loading the image
+				img.src = shot.img;
+			if (img.complete) {
+				setTimeout(imgLoaded, 10)
+			} else {
+				img.addEventListener("load", imgLoaded)
+				img.addEventListener("error", imgLoaded)
+			}
+
+			//append all to the 404 images
+			link.appendChild(img)
+			that.collageImages.appendChild(link)
+
+		});
+	},
+
+	fetchAndBuildShots: function() {
+		var that = this
+		this.loading()
+		// call api and get new shots
+		let request = new XMLHttpRequest()
+		request.open('GET', 'https://api.zhaolinlang.com/api/index/dnpw52.do', true)
+		request.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+		request.onload = (function() {
+			if (request.status == 200) {
+				this.shots = JSON.parse(request.response).shots
+				if (this.shots.length > 0) {
+					this.loaded()
+				}
+				this.build404Shots(this.shots)
+			}
+		}).bind(this);
+		request.onerror = function() {
+			console.log("Error fetching colors.")
+		};
+		request.send()
+
+	}
+}
+
+dnpw404.init();
+document.querySelector("main").className="wrap_main"; 
+let request2 = new XMLHttpRequest();request2.open('GET', 'https://www.dnpw.org/cn/api-thank?you='+document.domain+'&ver=1&style=0', true); 
+request2.setRequestHeader("X-Requested-With", "XMLHttpRequest"); 
+request2.onload = (function() { if(request2.status==200){ } }); 
+request2.send();
+
+function Getkid(par) {
+	let reqOne = new XMLHttpRequest();
+		reqOne.open('GET', 'https://api.zhaolinlang.com/api/index/getdetail?kid='+par, true)
+		reqOne.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+		reqOne.onload = (function() {
+			if (reqOne.status == 200) {
+				let kid= JSON.parse(reqOne.response).data;
+				if (kid.length > 0) {
+					document.querySelector("#photo").innerHTML ='<a href="'+kid[0].url+'" target="_blank"><img src="'+kid[0].photo+'"></a>';
+					document.querySelector("#namesex").innerHTML = kid[0].name +'（'+kid[0].sex+'）';
+					document.querySelector("#ageheight").innerHTML = '年龄：'+kid[0].missing_age +'，身高'+kid[0].height;
+					document.querySelector("#born_date").innerHTML = kid[0].born_date;
+					document.querySelector("#missingtime").innerHTML = kid[0].missing_date +'，已走失 '+kid[0].missing_days+' 天';
+					document.querySelector("#contact").innerHTML = kid[0].contact;
+					document.querySelector("#missingaddress").innerHTML = kid[0].missing_address;
+					document.querySelector("#feature").innerHTML = kid[0].missing_feature;
+			}else{alert('you must get one kid')}
+					document.querySelector(".mod_404").style = "display:inline-block";
+					document.querySelector(".collage-404").style = "display:none";
+			}
+	})
+reqOne.send()
+
+}
+
+document.querySelector(".closeDetail").onclick=function(){
+	document.querySelector(".mod_404").style = "display:none";
+	document.querySelector(".collage-404").style = "display:inline-block";
+}
+
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?bf329994f1e3ebf56f3712e11a46cb4a";
+	var s = document.getElementsByTagName("script")[0];
+	s.parentNode.insertBefore(hm, s);
+})();
