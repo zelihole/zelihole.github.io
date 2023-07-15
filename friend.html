@@ -14,6 +14,39 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+	<script>
+	var fnTextPopup = function (arr, options) {
+	    // arr参数是必须的
+	    if (!arr || !arr.length) {
+	        return;    
+	    }
+	    // 主逻辑
+	    var index = 0;
+	    document.documentElement.addEventListener('click', function (event) {
+	        var x = event.pageX, y = event.pageY;
+	        var eleText = document.createElement('span');
+	        eleText.className = 'text-popup';
+	        this.appendChild(eleText);
+	        if (arr[index]) {
+	            eleText.innerHTML = arr[index];
+	        } else {
+	            index = 0;
+	            eleText.innerHTML = arr[0];
+	        }
+	        // 动画结束后删除自己
+	        eleText.addEventListener('animationend', function () {
+	            eleText.parentNode.removeChild(eleText);
+	        });
+	        // 位置
+	        eleText.style.left = (x - eleText.clientWidth / 2) + 'px';
+	        eleText.style.top = (y - eleText.clientHeight) + 'px';
+	        // index递增
+	        index++;
+	    });    
+	};
+	
+	fnTextPopup(['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']);
+	</script>
 	<style>
 		
 	</style>
@@ -66,6 +99,19 @@
                 <!-- 所有博客列表 -->
                 <div class="container bg-white pt-5">
 
+		    <div class="row blog-item px-3 pb-5">
+                        <div class="col-md-5">
+                            <img class="img-fluid mb-4 mb-md-0" src="https://yimian-image.obs.cn-east-2.myhuaweicloud.com/imgbed/img_bd4dcd7_210x222_8_null_normal.jpeg?AWSAccessKeyId=6LJRZC0YN3MQXXFOWMIH&Expires=1689436486&Signature=FrOaLRuoYIPILqjo98e/zKMD2Ws%3D" width="150" height="150" alt="Liuxizai's Blog">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">Fat Old Eight</h3>
+                            <p>
+                                根据所有大佬的建（fu）议（du）…多练
+                            </p>
+                            <a class="btn btn-link p-0" href="https://fat-old-eight.github.io/">拜访TA<i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+			
 		    <div class="row blog-item px-3 pb-5">
                         <div class="col-md-5">
                             <img class="img-fluid mb-4 mb-md-0" src="https://bu.dusays.com/2022/12/28/63ac2812183aa.png" width="150" height="150" alt="Liuxizai's Blog">
