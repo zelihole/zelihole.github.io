@@ -31,6 +31,15 @@
 <article class="markdown-body">
   <h1>通过Giscus实现Github Pages静态网页评论功能</h1>
   <p>test123</p>
+	<p>以前试过Gitalk、Gitment、Vissues，都没能成功，这次用Giscus立马就可以了。</p>
+	<p>“<a href="https://giscus.app/zh-CN"”>https://giscus.app/zh-CN</a>是它的官方网站，教程上面已经很清楚了，根据网站上的选项选择后就可以直接复制生成的代码插入页面。</p>
+	<p>以下是<del>没长脑子的</del>我部署时粗心弄出的问题整理：</p>
+	<p>一、仓库要先下载好<a href="https://github.com/apps/giscus">Giscus的App</a>，并且启动仓库的Discussion功能。</p>
+	<p>二、它会需要一个仓库名称来查找这个仓库的Discussion是否可以使用，填Discussion的时候记得把用户名带上，不然查找不到。比如不要写“test.github.io”，而应该写“test/test.github.io”。</p>
+	<p>三、Giscus的评论框默认在已有评论的下面，评论太多的话得下拉半天很麻烦，所以最好在“特性”一栏中勾选“将评论框放在评论上方”。</p>
+	<p>四、复制JS代码后理论上可以直接粘贴在页面中，但是要注意div大小，不然Giscus的评论框可能会占满整个屏幕。</p>
+	<p>五、需使用GitHub账号登录后评论。</p>
+	<p><b>要不先在本页面下方试试发评论吧~支持Markdown语法欸。</b></p>
   <script src="https://giscus.app/client.js"
         data-repo="zelihole/zelihole.github.io"
         data-repo-id="R_kgDOJfvTpg"
