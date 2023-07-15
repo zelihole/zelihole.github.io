@@ -9872,4 +9872,23 @@ h3 {
   list-style-type: none;
 }
 
+.text-popup {
+    animation: textPopup 1s;
+    color: red;
+    user-select: none;
+    white-space: nowrap;
+    position: absolute;
+    z-index: 99;
+}
+@keyframes textPopup {
+    0%, 100% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);    
+    }
+}
 /*# sourceMappingURL=style.css.map */
