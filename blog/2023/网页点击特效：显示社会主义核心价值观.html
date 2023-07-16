@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+<title>GitHub Markdown CSS demo</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="https://zelihole.github.io/GitHub Markdown CSS demo_files/github-markdown.css">
+<style>
+			body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+				}
+			}
+		</style>
+<link rel="stylesheet" href="https://zelihole.github.io/GitHub Markdown CSS demo_files/gh-fork-ribbon.min.css">
+<style>
+			.github-fork-ribbon:before {
+				background-color: #121612;
+			}
+		</style>
+</head>
+<body>
+<article class="markdown-body">
+  <h1 class="atx" id="网页点击特效：显示社会主义核心价值观">网页点击特效：显示社会主义核心价值观</h1>
+<p>这需要用到一段CSS和JS。</p>
+<pre><code class="fenced-code-block language-css">.text-popup {
+    animation: textPopup 1s;
+    color: red;
+    user-select: none;
+    white-space: nowrap;
+    position: absolute;
+    z-index: 99;
+}
+@keyframes textPopup {
+    0%, 100% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);    
+    }
+}</code></pre>
+<p>插入上方CSS后再在网页任意处添加以下JavaScript代码，记得包含在<code>&lt;Script&gt;</code>标签里面。</p>
+<pre><code class="fenced-code-block language-javascript">var fnTextPopup = function (arr, options) {
+                    // arr参数是必须的
+                    if (!arr || !arr.length) {
+                        return;    
+                    }
+                    // 主逻辑
+                    var index = 0;
+                    document.documentElement.addEventListener('click', function (event) {
+                        var x = event.pageX, y = event.pageY;
+                        var eleText = document.createElement('span');
+                        eleText.className = 'text-popup';
+                        this.appendChild(eleText);
+                        if (arr[index]) {
+                            eleText.innerHTML = arr[index];
+                        } else {
+                            index = 0;
+                            eleText.innerHTML = arr[0];
+                        }
+                        // 动画结束后删除自己
+                        eleText.addEventListener('animationend', function () {
+                            eleText.parentNode.removeChild(eleText);
+                        });
+                        // 位置
+                        eleText.style.left = (x - eleText.clientWidth / 2) + 'px';
+                        eleText.style.top = (y - eleText.clientHeight) + 'px';
+                        // index递增
+                        index++;
+                    });    
+                };
+
+fnTextPopup(['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']);</code></pre>
+<p>完成后效果如下图所示，点击页面任意处会显示24字社会主义核心价值观。</p>
+<p><img alt="效果图" src="https://i2.100024.xyz/2023/07/16/115w5kc.webp"></p>
+<h3 class="atx" id="冇情提示">冇情提示</h3>
+<p>在写代码的同时别忘了背诵24字、城市宣传标语、八礼四仪等内容，最近文明城市又来检查抽背啦~</p>
+<pre><code class="fenced-code-block language-Chinese">富强 民主 文明 和谐
+自由 平等 公正 法治
+爱国 敬业 诚信 友善</code></pre>
+
+</article>
+<a class="github-fork-ribbon" href="https://github.com/zelihole/zelihole.github.io/" data-ribbon="Fork me on GitHub" title="Fuck me on GitHub">Fork me on GitHub</a>
+
+
+</body></html>
