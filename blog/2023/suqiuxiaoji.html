@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="九月这些事儿">
+<meta name="keywords" content="秋天，素秋，日记，总结，沙泽李">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+<title>GitHub Markdown CSS demo</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="https://zelihole.github.io/GitHub Markdown CSS demo_files/github-markdown.css">
+<script>
+				var fnTextPopup = function (arr, options) {
+				    // arr参数是必须的
+				    if (!arr || !arr.length) {
+				        return;    
+				    }
+				    // 主逻辑
+				    var index = 0;
+				    document.documentElement.addEventListener('click', function (event) {
+				        var x = event.pageX, y = event.pageY;
+				        var eleText = document.createElement('span');
+				        eleText.className = 'text-popup';
+				        this.appendChild(eleText);
+				        if (arr[index]) {
+				            eleText.innerHTML = arr[index];
+				        } else {
+				            index = 0;
+				            eleText.innerHTML = arr[0];
+				        }
+				        // 动画结束后删除自己
+				        eleText.addEventListener('animationend', function () {
+				            eleText.parentNode.removeChild(eleText);
+				        });
+				        // 位置
+				        eleText.style.left = (x - eleText.clientWidth / 2) + 'px';
+				        eleText.style.top = (y - eleText.clientHeight) + 'px';
+				        // index递增
+				        index++;
+				    });    
+				};
+				
+				fnTextPopup(['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']);
+</script>
+<style>
+			body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #0d1117;
+				}
+			}
+		</style>
+<link rel="stylesheet" href="https://zelihole.github.io/GitHub Markdown CSS demo_files/gh-fork-ribbon.min.css">
+<style>
+			.github-fork-ribbon:before {
+				background-color: #121612;
+			}
+		</style>
+</head>
+<body>
+<article class="markdown-body">
+  <h1 class="atx" id="素秋小记">素秋小记</h1>
+<p><em>闲聊九月的一些事</em></p>
+<blockquote>
+<p>认识了ArkTS</p>
+</blockquote>
+<p>中国著名文学家、思想家、革命家鲁迅没说过：“学好了C++，就搞懂了逻辑；搞懂了逻辑，就可以很方便地学习其他语言。”</p>
+<p>最近了解到一门新的语言，名叫ArkTS。一开始是看到新闻说下一个版本的HarmonyOS不再支持打开谷歌的安卓APK文件，仅支持运行<strong>鸿蒙HAP文件</strong>。此前我从未听说过HAP文件，于是又去问度娘有关HAP文件的信息。了解到HAP文件是由ArkTS编写的，ArkTS又是基于TypeScript的一门语言。</p>
+<p>我发现现在许多新事物的命名都喜欢用字母”A“开头，或许是希望它在搜索引擎里的排名可以靠前一点吧，早期亚马逊（Amazon）命名的时候，就是想让“Amazon”的排名可以靠前，才以此命名的，当然这是冷知识了。</p>
+<p>按照<a href="https://developer.harmonyos.com/cn/docs/documentation/doc-guides/document-outline-js-ets-0000001282486428">华为开发者联盟</a>的介绍，ArkTS有专门的编译器叫做DevEco Studio<del>，LOGO长得很像可回收物的标志</del>，界面一打开全是英语，看着挺吃力，看来想入门仍然得过一道高高的槛——这是后话了。</p>
+<blockquote>
+<p>人工智能入侵地球</p>
+</blockquote>
+<p>另一件大事是<del>人工智能入侵地球</del>智能对话模型越来越人性化<del>成为伪人</del>，其实一开始我并没有觉得这些所谓的人工智能对话模型有什么像人的地方，后来琢磨想到，普通人类聊天都有一个场景，而智能对话模型没有，所以在对话框输入的时候要先讲好在什么情况下、你我双方的身份这些基本信息，使其带入到我的场景里来。这时我才懂得百度文心一言的“提示词”功能是干啥用的了。</p>
+<p>文心一言是我最先用的一款智能对话模型，但是我后来对比发现，科大讯飞的讯飞星火更好用，最明显的区别就是，同样一道方程，文心一言可以给出具体的运算思路，但是它自己算不对，然而讯飞星火可以算对。(⊙o⊙)…</p>
+<blockquote>
+<p>见证历史一脸懵</p>
+</blockquote>
+<p>有时候我有一种错觉，我是不是活的太久了，见证历史的机会咋越来越多了呢，<del>先有某岛国首相安倍晋三被枪击，后有英国女王与世长辞，此后英国的现状及其令人疑惑，比如让印度人当首相，再看旁边美国，两个退休老头争一个职位，其中一个还被拍了大头照。</del>刚买俩月的华为Mate 50，结果Mate 60悄声无息地出现，而且还内置国产4.~~999999~~~G芯片……</p>
+<blockquote>
+<p>各种活动……</p>
+</blockquote>
+<p>明年（2024年）就要中考，学习为重，可能没啥空管博客，最近又要有运动会，班级口号本来想定为“遥遥领先-遥遥领先-遥遥领先-遥遥领先”，体育组却说这样太狂了，于是改了。</p>
+<p>最后祝同志们中秋团圆，国庆快乐，考试上岸。</p>
+<p><em>二〇二三年十月一日晚</em></p>
+
+</article>
+<a class="github-fork-ribbon" href="https://github.com/zelihole/zelihole.github.io/" data-ribbon="Fork me on GitHub" title="Fuck me on GitHub">Fork me on GitHub</a>
+
+
+</body></html>
